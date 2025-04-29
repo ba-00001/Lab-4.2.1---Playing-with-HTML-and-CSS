@@ -1,0 +1,165 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="section">
+    <h1 class="title section-title">Data Visualization</h1>
+    
+    <div class="columns is-multiline">
+        <div class="column is-12-tablet is-7-desktop">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon mr-2"><i class="fas fa-chart-bar"></i></span>
+                        Monthly Data Chart
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <canvas id="monthlyChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column is-12-tablet is-5-desktop">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon mr-2"><i class="fas fa-table"></i></span>
+                        Data Table
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <table class="table is-fullwidth is-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in range(labels|length) %}
+                                <tr>
+                                    <td>{{ labels[i] }}</td>
+                                    <td>{{ values[i] }}</td>
+                                    <td>
+                                        {% if values[i] > 25 %}
+                                            <span class="tag is-success">High</span>
+                                        {% elif values[i] > 15 %}
+                                            <span class="tag is-warning">Medium</span>
+                                        {% else %}
+                                            <span class="tag is-danger">Low</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon mr-2"><i class="fas fa-info-circle"></i></span>
+                        Data Summary
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <div class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Average</p>
+                                    <p class="title">{{ (values|sum / values|length)|round(1) }}</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Highest</p>
+                                    <p class="title">{{ values|max }}</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <p class="heading">Lowest</p>
+                                    <p class="title">{{ values|min }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification is-warning is-light mt-5">
+        <div class="columns is-vcentered">
+            <div class="column">
+                <p><strong>Note:</strong> This data is for demonstration purposes only. In a real application, you would fetch data from a database or API.</p>
+            </div>
+            <div class="column is-narrow">
+                <button class="button is-warning is-light">
+                    <span class="icon"><i class="fas fa-sync-alt"></i></span>
+                    <span>Refresh Data</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get the chart canvas
+        const ctx = document.getElementById('monthlyChart').getContext('2d');
+        
+        // Create the chart
+        const monthlyChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|tojson }},
+                datasets: [{
+                    label: 'Monthly Values',
+                    data: {{ values|tojson }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Data Values'
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

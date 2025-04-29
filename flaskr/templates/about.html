@@ -1,0 +1,90 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="section">
+    <h1 class="title section-title">About This Application</h1>
+    
+    <div class="box">
+        <div class="content">
+            <h2 class="is-size-4">Purpose</h2>
+            <p>This Flask application was created as part of Lab 4.2.1 - Playing with HTML and CSS. The main goal is to demonstrate how to implement a responsive and user-friendly web interface using HTML, CSS, and the Bulma framework.</p>
+            
+            <h2 class="is-size-4 mt-5">Features</h2>
+            <div class="columns is-multiline">
+                <div class="column is-12-mobile is-6-tablet">
+                    <div class="notification is-primary is-light">
+                        <h3 class="is-size-5">
+                            <span class="icon"><i class="fas fa-mobile-alt"></i></span>
+                            <span>Responsive Design</span>
+                        </h3>
+                        <p>The application is fully responsive and works well on desktop, tablet, and mobile devices.</p>
+                    </div>
+                </div>
+                
+                <div class="column is-12-mobile is-6-tablet">
+                    <div class="notification is-link is-light">
+                        <h3 class="is-size-5">
+                            <span class="icon"><i class="fas fa-font"></i></span>
+                            <span>Improved Typography</span>
+                        </h3>
+                        <p>We've improved typography with better font choices, sizes, and spacing for enhanced readability.</p>
+                    </div>
+                </div>
+                
+                <div class="column is-12-mobile is-6-tablet">
+                    <div class="notification is-info is-light">
+                        <h3 class="is-size-5">
+                            <span class="icon"><i class="fas fa-layer-group"></i></span>
+                            <span>Visual Hierarchy</span>
+                        </h3>
+                        <p>Clear visual hierarchy with color, size, and spacing makes it easier to navigate the content.</p>
+                    </div>
+                </div>
+                
+                <div class="column is-12-mobile is-6-tablet">
+                    <div class="notification is-success is-light">
+                        <h3 class="is-size-5">
+                            <span class="icon"><i class="fas fa-chart-area"></i></span>
+                            <span>Data Visualization</span>
+                        </h3>
+                        <p>Integration with Chart.js for creating interactive charts and graphs to visualize data.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="is-size-4 mt-5">Technologies Used</h2>
+            <div class="tags are-medium">
+                <span class="tag is-primary">Flask</span>
+                <span class="tag is-link">Python</span>
+                <span class="tag is-info">HTML5</span>
+                <span class="tag is-success">CSS3</span>
+                <span class="tag is-warning">JavaScript</span>
+                <span class="tag is-danger">Bulma CSS</span>
+                <span class="tag is-primary is-light">Chart.js</span>
+                <span class="tag is-link is-light">Font Awesome</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mt-5">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                        <i class="fas fa-user fa-2x" style="color: #3273dc;"></i>
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-4">About the Developer</p>
+                    <p class="subtitle is-6">Student at FIU</p>
+                </div>
+            </div>
+            
+            <div class="content">
+                <p>This application was developed as part of a coursework assignment at Florida International University. The goal was to demonstrate HTML and CSS skills in a Flask application context.</p>
+                <p>Feel free to explore the code and use it as a reference for your own projects!</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

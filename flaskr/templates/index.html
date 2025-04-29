@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="section">
+    <h1 class="title section-title">Welcome to Flask App</h1>
+    
+    <div class="columns is-multiline">
+        <div class="column is-12-mobile is-6-tablet is-4-desktop">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon mr-2"><i class="fas fa-rocket"></i></span>
+                        Getting Started
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <p>This Flask application demonstrates HTML and CSS usage for web development. Explore the different pages to learn more about the features.</p>
+                        <a href="{{ url_for('main.about') }}" class="button is-primary is-fullwidth">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column is-12-mobile is-6-tablet is-4-desktop">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon mr-2"><i class="fas fa-palette"></i></span>
+                        UI Features
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <p>This application features responsive design, improved typography, and enhanced visual hierarchy using Bulma CSS framework.</p>
+                        <a href="#" class="button is-info is-fullwidth">View Examples</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column is-12-mobile is-6-tablet is-4-desktop">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon mr-2"><i class="fas fa-chart-line"></i></span>
+                        Data Visualization
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <p>Check out our data visualization page to see how we integrate Chart.js with Flask to create interactive charts and graphs.</p>
+                        <a href="{{ url_for('main.data') }}" class="button is-success is-fullwidth">View Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification is-info is-light mt-5">
+        <div class="columns is-vcentered">
+            <div class="column is-9">
+                <p class="is-size-5">
+                    <strong>Tip:</strong> Try changing the browser window size to see how the responsive design adapts!
+                </p>
+            </div>
+            <div class="column">
+                <button class="button is-info is-outlined is-fullwidth">
+                    <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                    <span>Learn More</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
